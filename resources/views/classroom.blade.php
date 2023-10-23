@@ -1,7 +1,7 @@
 <!-- Layouts Using Template Inheritance -->
 @extends('layouts.mainlayout')
 
-@section('title', 'Student')
+@section('title', 'Class')
 
 @section('content')
     <h1>Ini Halaman Class</h1>
@@ -12,8 +12,9 @@
             <tr>
                 <th>No.</th>
                 <th>Kelas</th>
-                <th>Students</th>
-                <th>Walikelas</th>
+                {{-- <th>Students</th>
+                <th>Walikelas</th> --}}
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -23,12 +24,13 @@
             <tr>
                 <td>{{$loop->iteration}}</td>
                 <td>{{$data->name}}</td>
-                <td>
+                {{-- <td>
                     @foreach($data->students as $students)
                     -{{$students->name}} <br>
                     @endforeach
                 </td>
-                <td>{{$data->Walikelas->name}}</td>
+                <td>{{$data->Walikelas->name}}</td> --}}
+                <td><a href="class-detail/{{$data->id}}">Detail</a></td>
             </tr>
             @endforeach
         </tbody>

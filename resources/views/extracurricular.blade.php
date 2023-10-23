@@ -11,7 +11,8 @@
                 <tr>
                     <th>#</th>
                     <th>Extracurricular</th>
-                    <th>Anggota Eskul</th>
+                    {{-- <th>Anggota Eskul</th> --}}
+                    <th>Action</th>
                 </tr>
         </thead>
         <tbody>
@@ -22,11 +23,12 @@
                 <tr>
                     <td>{{$loop->iteration}}</td>
                     <td>{{$data->name}}</td>
-                    <td>
+                    {{-- <td>
                         @foreach ($data->students as $item)
                             - {{$item->name}} <br>
                         @endforeach
-                    </td>
+                    </td> --}}
+                    <td><a href="eskul-detail/{{$data->id}}">Detail</a></td>
                 </tr>
                 @endforeach
             </ol>

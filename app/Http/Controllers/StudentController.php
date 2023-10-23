@@ -16,11 +16,23 @@ class StudentController extends Controller
         // return view('student', ['studentList'=> $student]);
 
         //cara eager loading
-        $student = Student::with(['class.waliKelas', 'extracurriculars'])->get(); // select * from students;
+        // $student = Student::with(['class.waliKelas', 'extracurriculars'])->get(); // select * from students;
+        // return view('student', ['studentList'=> $student]);
+
+        $student = Student::get(); // select * from students;
         return view('student', ['studentList'=> $student]);
-
-
+        
     }
+
+    public function show($id)
+    {
+        //eloquent belongsTo
+        $student = Student::with(['class.waliKelas', 'extracurriculars'])
+        ->findOrFail($id);
+        return view('student-detail', ['student'=> $student]);
+    }
+
+   
 }
 
 
