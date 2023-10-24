@@ -35,6 +35,7 @@ Route::get('/extracurricular', [ExtracurricularController::class, 'index']);
 Route::get('/eskul-detail/{id}', [ExtracurricularController::class, 'show']);
 
 Route::get('/teacher', [TeacherController::class, 'index']);
+Route::get('/teacher-detail/{id}', [TeacherController::class, 'show']);
 
 
 

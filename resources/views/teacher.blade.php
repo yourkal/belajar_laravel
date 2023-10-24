@@ -20,7 +20,7 @@
                 <tr>
                     <td>{{$loop->iteration}}</td>
                     <td>{{$item->name}}</td>
-                    <td><a href="">Detail</a></td>
+                    <td><a href="teacher-detail/{{$item->id}}">Detail</a></td>
                 </tr>
             @endforeach
         </tbody>

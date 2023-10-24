@@ -13,4 +13,10 @@ class TeacherController extends Controller
          $teacher = Teacher::all(); // select * from students;
          return view('teacher', ['teacherList'=> $teacher]);
     }
+
+    public function show($id) {
+        $teacher = Teacher::with('class.students')
+        ->findOrFail($id); 
+        return view('teacher-detail', ['teacher'=> $teacher]);
+    }
 }
