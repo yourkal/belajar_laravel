@@ -4,6 +4,11 @@
 
 @section('content')
     <h1>Ini Halaman Teacher</h1>
+
+    <div class="my5 mt-3 mb-3">
+        <a href="" class="btn btn-primary">Tambah Data</a>
+    </div>
+
     <h3>List Teacher</h3>
 
     <table class="table">
