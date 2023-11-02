@@ -8,8 +8,12 @@
     <h1>Ini Halaman Student</h1>
 
     <div class="my-5 d-flex justify-content-between">
+        @if (Auth::user()->role_id != 1 && Auth::user()->role_id != 2)
+            
+        @else      
         <a href="student-tambah" class="btn btn-primary">Tambah Data</a>
         <a href="student-terhapus" class="btn btn-info">List Data Terhapus</a>
+        @endif
     </div>
 
     @if (Session::has('status'))
@@ -59,9 +63,17 @@
                         @endforeach
                     </td>
                     <td>{{$data->class->waliKelas->name}}</td> --}}
-                        <td><a href="student/{{ $data->id }}">Detail</a> |
-                            <a href="student-edit/{{ $data->id }}">Edit</a> |
-                            <a href="student-delete/{{ $data->id }}">Hapus</a>
+                        <td>
+                            @if (Auth::user()->role_id != 1 && Auth::user()->role_id != 2)
+                                -
+                            @else
+                                <a href="student/{{ $data->id }}">Detail</a> |
+                                <a href="student-edit/{{ $data->id }}">Edit</a> |
+                            @endif
+
+                            @if (Auth::user()->role_id == 1)
+                                <a href="student-delete/{{ $data->id }}">Hapus</a>
+                            @endif
                         </td>
                     </tr>
                 @endforeach

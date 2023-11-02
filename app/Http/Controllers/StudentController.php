@@ -42,7 +42,18 @@ class StudentController extends Controller
     }
 
     public function store(StudentCreateRequest $request)
-    { //menyimpan data dengan mass assignment
+    {
+        // dd($request->all());
+
+        $newName = '';
+
+        if ($request->file('photo')) {
+            $extension = $request->file('photo')->getClientOriginalExtension();
+            $newName = $request->name . '.' . now()->timestamp . '.' . $extension;
+            $request->file('photo')->storeAs('photo', $newName);
+        }
+        //menyimpan data dengan mass assignment
+        $request ['image'] = $newName;
         $student = Student::create($request->all());
 
         if ($student) {
@@ -63,8 +74,16 @@ class StudentController extends Controller
 
     public function update(StudentEditRequest $request, $id)
     {
+        // dd($request->all());
+        if ($request->file('photo')) {
+            $extension = $request->file('photo')->getClientOriginalExtension();
+            $newName = $request->name . '.' . now()->timestamp . '.' . $extension;
+            $request->file('photo')->storeAs('photo', $newName);
+        }
+
         $student = Student::findOrFail($id);
         //menyimpan data dengan mass assignment
+        $request ['image'] = $newName;
         $student->update($request->all());
 
         if ($student) {
