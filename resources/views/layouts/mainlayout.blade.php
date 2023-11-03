@@ -57,3 +57,5 @@
 </body>
 </html>
 
+{{-- @yield = nerima data --}}
+{{-- @section = kirim data --}}

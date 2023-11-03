@@ -75,6 +75,8 @@ class StudentController extends Controller
     public function update(StudentEditRequest $request, $id)
     {
         // dd($request->all());
+        $newName = '';
+
         if ($request->file('photo')) {
             $extension = $request->file('photo')->getClientOriginalExtension();
             $newName = $request->name . '.' . now()->timestamp . '.' . $extension;
